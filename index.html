@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bumi Madinah Dialysis Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #1a1a2e;
+            --bg-secondary: #16213e;
+            --accent: #e94560;
+            --accent-light: #ff6b6b;
+            --text-primary: #eaeaea;
+            --text-muted: #a0a0a0;
+            --card-bg: rgba(255,255,255,0.05);
+            --border: rgba(255,255,255,0.1);
+            --success: #4ade80;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Background Pattern */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            top: -100px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #4a90a4, #64b5c6);
+            bottom: -50px;
+            left: -50px;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #e94560, #ff8a80);
+            top: 50%;
+            left: 50%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(20px, 30px) scale(1.02); }
+        }
+
+        /* Silhouette Styles */
+        .silhouette-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .silhouette-kidney {
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            width: 180px;
+            height: 220px;
+            opacity: 0.9;
+            animation: sway 8s ease-in-out infinite;
+        }
+
+        .silhouette-dialysis {
+            position: absolute;
+            bottom: 0;
+            right: 8%;
+            width: 200px;
+            height: 280px;
+            opacity: 0.85;
+            animation: sway 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+        }
+
+        /* Poster Frame */
+        .poster-frame {
+            position: relative;
+            background: linear-gradient(145deg, #2d2d44, #1f1f35);
+            border-radius: 12px;
+            padding: 4px;
+            box-shadow: 
+                0 25px 50px -12px rgba(0,0,0,0.5),
+                0 0 0 1px rgba(255,255,255,0.05),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        .poster-inner {
+            background: linear-gradient(180deg, #e94560 0%, #c73e54 30%, #a33548 60%, #1a1a2e 100%);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .poster-hook {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 30px;
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 12px 28px;
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--accent);
+        }
+
+        /* Input Styles */
+        .input-field {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.1);
+        }
+
+        .input-field::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* Card Styles */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        /* Navigation Links */
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(233, 69, 96, 0.1);
+            border-color: var(--accent);
+            transform: translateX(8px);
+        }
+
+        .nav-link svg {
+            flex-shrink: 0;
+        }
+
+        /* Live Comment */
+        .comment-item {
+            animation: slideIn 0.4s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Viewer Counter */
+        .viewer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: rgba(74, 222, 128, 0.15);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--success);
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        /* Like Button */
+        .like-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-muted);
+        }
+
+        .like-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .like-btn.liked {
+            background: rgba(233, 69, 96, 0.15);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .like-btn.liked svg {
+            fill: var(--accent);
+        }
+
+        /* Subscribe Button */
+        .subscribe-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            font-weight: 600;
+        }
+
+        .subscribe-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(233, 69, 96, 0.4);
+        }
+
+        .subscribe-btn.subscribed {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+        }
+
+        /* Scroll Animation */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Guest Mode Notice */
+        .guest-notice {
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.1), rgba(255, 107, 107, 0.05));
+            border: 1px solid rgba(233, 69, 96, 0.2);
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .poster-frame {
+                transform: scale(0.9);
+            }
+            
+            .silhouette-kidney {
+                width: 120px;
+                height: 150px;
+                left: 5%;
+            }
+            
+            .silhouette-dialysis {
+                width: 140px;
+                height: 200px;
+                right: 5%;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background -->
+    <div class="bg-pattern">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div id="app" class="relative z-10 min-h-screen">
+        
+        <!-- LOGIN PAGE -->
+        <div id="loginPage" class="min-h-screen flex items-center justify-center p-4">
+            <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 max-w-6xl w-full">
+                
+                <!-- Poster Frame with Silhouettes -->
+                <div class="poster-frame w-full max-w-md flex-shrink-0">
+                    <!-- Hook -->
+                    <svg class="poster-hook" viewBox="0 0 40 30" fill="none">
+                        <path d="M20 30 L20 15 Q20 5 15 5 L10 5 Q5 5 5 10 L5 12" stroke="#666" stroke-width="2" fill="none"/>
+                        <circle cx="8" cy="5" r="3" fill="#444"/>
+                    </svg>
+                    
+                    <div class="poster-inner h-[500px] relative overflow-hidden">
+                        <!-- Header Text -->
+                        <div class="relative z-10 text-center pt-10 px-6">
+                            <h1 class="font-display text-3xl font-bold text-white drop-shadow-lg tracking-wide">
+                                BUMI MADINAH
+                            </h1>
+                            <p class="text-white/80 mt-2 text-sm tracking-widest uppercase">
+                                Dialysis Center
+                            </p>
+                        </div>
+
+                        <!-- Tagline -->
+                        <div class="absolute top-1/3 left-0 right-0 text-center px-6 z-10">
+                            <p class="font-display text-xl text-white/90 italic">
+                                "Care Beyond Treatment"
+                            </p>
+                            <p class="text-white/60 text-sm mt-3">
+                                Your Health Journey Partner
+                            </p>
+                        </div>
+
+                        <!-- Silhouette Container -->
+                        <div class="silhouette-container">
+                            <!-- Kidney Silhouette -->
+                            <svg class="silhouette-kidney" viewBox="0 0 100 120" fill="none">
+                                <path d="M50 10 Q20 20 15 50 Q10 80 30 100 Q40 110 50 105 Q60 110 70 100 Q90 80 85 50 Q80 20 50 10 M50 35 Q35 45 35 60 Q35 80 50 85 Q65 80 65 60 Q65 45 50 35" 
+                                      fill="#0a0a15" stroke="#0a0a15" stroke-width="2"/>
+                                <ellipse cx="50" cy="60" rx="12" ry="15" fill="#1a1a2e"/>
+                            </svg>
+
+                            <!-- Dialysis Machine Silhouette -->
+                            <svg class="silhouette-dialysis" viewBox="0 0 100 140" fill="none">
+                                <!-- Machine Body -->
+                                <rect x="20" y="20" width="60" height="100" rx="8" fill="#0a0a15"/>
+                                <!-- Screen -->
+                                <rect x="28" y="30" width="44" height="30" rx="4" fill="#1a1a2e"/>
+                                <!-- Dial -->
+                                <circle cx="50" cy="80" r="15" fill="#0f0f1a" stroke="#1a1a2e" stroke-width="2"/>
+                                <circle cx="50" cy="80" r="8" fill="#1a1a2e"/>
+                                <!-- Tubes -->
+                                <path d="M10 60 Q5 70 10 80 L20 80" stroke="#0a0a15" stroke-width="4" fill="none"/>
+                                <path d="M90 60 Q95 70 90 80 L80 80" stroke="#0a0a15" stroke-width="4" fill="none"/>
+                                <!-- Base -->
+                                <rect x="25" y="120" width="50" height="15" rx="3" fill="#0a0a15"/>
+                                <!-- Wheels -->
+                                <circle cx="35" cy="135" r="5" fill="#0f0f1a"/>
+                                <circle cx="65" cy="135" r="5" fill="#0f0f1a"/>
+                            </svg>
+                        </div>
+
+                        <!-- Mountains/Decor -->
+                        <svg class="absolute bottom-0 left-0 right-0 h-32" viewBox="0 0 400 100" preserveAspectRatio="none">
+                            <path d="M0 100 L0 60 Q50 40 100 55 Q150 30 200 50 Q250 20 300 45 Q350 35 400 55 L400 100 Z" 
+                                  fill="#0a0a15" opacity="0.6"/>
+                            <path d="M0 100 L0 70 Q80 50 150 65 Q220 45 280 60 Q340 50 400 70 L400 100 Z" 
+                                  fill="#0a0a15" opacity="0.8"/>
+                        </svg>
+
+                        <!-- Footer -->
+                        <div class="absolute bottom-4 left-0 right-0 text-center z-10">
+                            <p class="text-white/40 text-xs tracking-wider">
+                                bumimadinah.com
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Login Form -->
+                <div class="w-full max-w-md">
+                    <div class="glass-card p-8">
+                        <div class="text-center mb-8">
+                            <h2 class="font-display text-3xl font-bold text-white">Selamat Datang</h2>
+                            <p class="text-gray-400 mt-2">Masuk untuk mengakses layanan</p>
+                        </div>
+
+                        <form id="loginForm" class="space-y-5">
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-2">Email</label>
+                                <input type="email" class="input-field" placeholder="nama@email.com" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-2">Password</label>
+                                <input type="password" class="input-field" placeholder="Masukkan password" required>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <label class="flex items-center gap-2 text-gray-400 cursor-pointer">
+                                    <input type="checkbox" class="w-4 h-4 rounded border-gray-600 bg-transparent">
+                                    Ingat saya
+                                </label>
+                                <a href="#" class="text-accent hover:underline" style="color: var(--accent)">Lupa password?</a>
+                            </div>
+                            <button type="submit" class="btn-primary w-full">
+                                Masuk
+                            </button>
+                        </form>
+
+                        <div class="mt-6 pt-6 border-t border-white/10">
+                            <p class="text-center text-gray-400 text-sm mb-4">Atau masuk sebagai</p>
+                            <button id="guestBtn" class="btn-secondary w-full flex items-center justify-center gap-2">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="12" cy="7" r="4"/>
+                                </svg>
+                                Tamu
+                            </button>
+                        </div>
+
+                        <p class="text-center text-gray-500 text-sm mt-6">
+                            Belum punya akun? 
+                            <a href="#" class="text-accent hover:underline" style="color: var(--accent)">Daftar sekarang</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DASHBOARD PAGE (Hidden by default) -->
+        <div id="dashboardPage" class="hidden min-h-screen">
+            <!-- Header -->
+            <header class="sticky top-0 z-50 backdrop-blur-xl bg-opacity-80" style="background: rgba(26, 26, 46, 0.9);">
+                <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-accent to-accent-light flex items-center justify-center" style="background: linear-gradient(135deg, #e94560, #ff6b6b);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h1 class="font-display text-lg font-bold text-white">Bumi Madinah</h1>
+                            <p class="text-xs text-gray-400">Dialysis Center</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-4">
+                        <!-- Viewer Counter -->
+                        <div class="viewer-badge">
+                            <span class="pulse-dot"></span>
+                            <span id="viewerCount">247</span> viewers hari ini
+                        </div>
+                        
+                        <!-- User Info -->
+                        <div id="userBadge" class="flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10">
+                            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-sm font-bold">
+                                <span id="userInitial">T</span>
+                            </div>
+                            <span id="userName" class="text-sm font-medium hidden sm:block">Tamu</span>
+                        </div>
+                        
+                        <!-- Logout -->
+                        <button id="logoutBtn" class="p-2 rounded-lg hover:bg-white/5 transition-colors" title="Keluar">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                                <polyline points="16 17 21 12 16 7"/>
+                                <line x1="21" y1="12" x2="9" y2="12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="max-w-6xl mx-auto px-4 py-8">
+                <!-- Welcome Section -->
+                <section class="fade-up mb-10">
+                    <h2 class="font-display text-3xl font-bold mb-2">
+                        <span id="welcomeText">Selamat Datang, Tamu</span>
+                    </h2>
+                    <p class="text-gray-400">Pilih layanan yang Anda butuhkan</p>
+                </section>
+
+                <!-- Navigation Links -->
+                <section class="fade-up mb-10" style="transition-delay: 0.1s;">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                        Menu Utama
+                    </h3>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <a href="https://bumimadinahdb26-cloud.github.io/asahginjal/" target="_blank" class="nav-link group">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold">Monitoring Akses HD</h4>
+                                <p class="text-sm text-gray-400">Pantau akses hemodialisis Anda</p>
+                            </div>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="opacity-0 group-hover:opacity-100 transition-opacity">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+
+                        <a href="https://bumimadinahdb26-cloud.github.io/TEMAN/" target="_blank" class="nav-link group">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold">Monitoring Kondisi Badan</h4>
+                                <p class="text-sm text-gray-400">Track kesehatan harian Anda</p>
+                            </div>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="opacity-0 group-hover:opacity-100 transition-opacity">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Guest Notice (shown only for guest users) -->
+                <div id="guestNotice" class="guest-notice mb-8 hidden">
+                    <div class="flex items-start gap-3">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-accent flex-shrink-0 mt-0.5" style="color: var(--accent)">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                        <div>
+                            <h4 class="font-semibold text-white">Mode Tamu</h4>
+                            <p class="text-sm text-gray-400 mt-1">Anda dapat melihat dan menyukai komentar, tetapi tidak dapat mengirim komentar. Daftar atau login untuk berpartisipasi penuh.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interaction Section -->
+                <section class="fade-up mb-8" style="transition-delay: 0.2s;">
+                    <div class="glass-card p-6">
+                        <div class="flex flex-wrap items-center gap-4 mb-6">
+                            <!-- Like Button -->
+                            <button id="likeBtn" class="like-btn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+                                </svg>
+                                <span id="likeCount">1,248</span>
+                            </button>
+
+                            <!-- Subscribe Button -->
+                            <button id="subscribeBtn" class="subscribe-btn">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                                </svg>
+                                <span id="subscribeText">Subscribe</span>
+                            </button>
+
+                            <!-- Share Button -->
+                            <button id="shareBtn" class="btn-secondary flex items-center gap-2">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="18" cy="5" r="3"/>
+                                    <circle cx="6" cy="12" r="3"/>
+                                    <circle cx="18" cy="19" r="3"/>
+                                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                                </svg>
+                                Bagikan
+                            </button>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="flex flex-wrap gap-6 text-sm text-gray-400">
+                            <span class="flex items-center gap-2">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                                <span id="totalViews">247</span> views hari ini
+                            </span>
+                            <span class="flex items-center gap-2">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                                <span id="subscriberCount">892</span> subscribers
+                            </span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Live Commentary Section -->
+                <section class="fade-up" style="transition-delay: 0.3s;">
+                    <div class="glass-card">
+                        <div class="p-6 border-b border-white/10">
+                            <h3 class="text-lg font-semibold flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></span>
+                                Live Commentary
+                                <span class="text-sm font-normal text-gray-400 ml-2">Real-time</span>
+                            </h3>
+                        </div>
+
+                        <!-- Comments List -->
+                        <div id="commentsList" class="max-h-96 overflow-y-auto p-4 space-y-4">
+                            <!-- Comments will be injected here -->
+                        </div>
+
+                        <!-- Comment Input (Only for logged in users) -->
+                        <div id="commentInput" class="p-4 border-t border-white/10">
+                            <div id="loggedInComment" class="hidden">
+                                <div class="flex gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-sm font-bold flex-shrink-0">
+                                        <span id="commentUserInitial">U</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <input type="text" id="commentField" class="input-field mb-3" placeholder="Tulis komentar Anda...">
+                                        <button id="sendCommentBtn" class="btn-primary text-sm">
+                                            Kirim Komentar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="guestComment" class="text-center py-4">
+                                <p class="text-gray-400 text-sm">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="inline mr-1">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                    </svg>
+                                    Login untuk mengirim komentar
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <footer class="border-t border-white/10 mt-16">
+                <div class="max-w-6xl mx-auto px-4 py-8">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                        <p class="text-gray-500 text-sm">
+                            2024 Bumi Madinah Dialysis Center. All rights reserved.
+                        </p>
+                        <p class="text-gray-600 text-xs">
+                            bumimadinahdb26-cloud.github.io
+                        </p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 z-50 transform translate-y-20 opacity-0 transition-all duration-300">
+        <div class="glass-card px-6 py-4 flex items-center gap-3">
+            <span id="toastIcon"></span>
+            <span id="toastMessage" class="text-sm"></span>
+        </div>
+    </div>
+
+    <script>
+        // ========== DATA ==========
+        const commentsData = [
+            { id: 1, user: 'Ahmad Rizki', avatar: 'AR', message: 'Terima kasih atas informasinya, sangat membantu untuk monitoring kesehatan ginjal saya.', time: '2 menit lalu', color: 'from-rose-500 to-pink-600' },
+            { id: 2, user: 'Siti Nurhaliza', avatar: 'SN', message: 'Sudah coba monitoring akses HD, sangat mudah digunakan!', time: '5 menit lalu', color: 'from-cyan-500 to-blue-600' },
+            { id: 3, user: 'Budi Santoso', avatar: 'BS', message: 'Semoga aplikasinya terus dikembangkan, sangat bermanfaat bagi pasien dialisis.', time: '8 menit lalu', color: 'from-emerald-500 to-teal-600' },
+            { id: 4, user: 'Dewi Lestari', avatar: 'DL', message: 'Website yang sangat informatif. Terima kasih Bumi Madinah!', time: '12 menit lalu', color: 'from-purple-500 to-violet-600' },
+            { id: 5, user: 'Rudi Hermawan', avatar: 'RH', message: 'Fitur live commentarynya bagus, bisa berbagi pengalaman dengan pasien lain.', time: '15 menit lalu', color: 'from-orange-500 to-amber-600' }
+        ];
+
+        const liveComments = [
+            'Pelayanan sangat ramah dan profesional',
+            'Monitoring kondisi badan membantu saya track kesehatan',
+            'Terima kasih sudah membuat platform ini',
+            'Sangat membantu untuk pasien HD',
+            'Informasinya lengkap dan akurat'
+        ];
+
+        // ========== STATE ==========
+        let currentUser = null;
+        let isSubscribed = false;
+        let hasLiked = false;
+        let likeCount = 1248;
+        let subscriberCount = 892;
+        let viewerCount = 247;
+        let commentIdCounter = 6;
+
+        // ========== DOM ELEMENTS ==========
+        const loginPage = document.getElementById('loginPage');
+        const dashboardPage = document.getElementById('dashboardPage');
+        const loginForm = document.getElementById('loginForm');
+        const guestBtn = document.getElementById('guestBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const likeBtn = document.getElementById('likeBtn');
+        const subscribeBtn = document.getElementById('subscribeBtn');
+        const commentsList = document.getElementById('commentsList');
+        const commentField = document.getElementById('commentField');
+        const sendCommentBtn = document.getElementById('sendCommentBtn');
+        const guestNotice = document.getElementById('guestNotice');
+        const loggedInComment = document.getElementById('loggedInComment');
+        const guestComment = document.getElementById('guestComment');
+
+        // ========== FUNCTIONS ==========
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastIcon = document.getElementById('toastIcon');
+            const toastMessage = document.getElementById('toastMessage');
+            
+            toastMessage.textContent = message;
+            
+            if (type === 'success') {
+                toastIcon.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+            } else if (type === 'info') {
+                toastIcon.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>';
+            } else {
+                toastIcon.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>';
+            }
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        function renderComments() {
+            commentsList.innerHTML = commentsData.map(comment => `
+                <div class="comment-item flex gap-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br ${comment.color} flex items-center justify-center text-sm font-bold flex-shrink-0">
+                        ${comment.avatar}
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="font-medium text-white">${comment.user}</span>
+                            <span class="text-xs text-gray-500">${comment.time}</span>
+                        </div>
+                        <p class="text-gray-300 text-sm">${comment.message}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateUI() {
+            const isGuest = currentUser && currentUser.isGuest;
+            
+            if (isGuest) {
+                guestNotice.classList.remove('hidden');
+                loggedInComment.classList.add('hidden');
+                guestComment.classList.remove('hidden');
+            } else if (currentUser) {
+                guestNotice.classList.add('hidden');
+                loggedInComment.classList.remove('hidden');
+                guestComment.classList.add('hidden');
+                
+                document.getElementById('commentUserInitial').textContent = currentUser.name.charAt(0).toUpperCase();
+            }
+            
+            if (currentUser) {
+                document.getElementById('userName').textContent = currentUser.name;
+                document.getElementById('userInitial').textContent = currentUser.name.charAt(0).toUpperCase();
+                document.getElementById('welcomeText').textContent = `Selamat Datang, ${currentUser.name}`;
+            }
+        }
+
+        function addLiveComment() {
+            if (Math.random() > 0.5) {
+                const randomNames = ['Anon', 'Visitor', 'User', 'Guest'];
+                const randomColors = ['from-rose-500 to-pink-600', 'from-cyan-500 to-blue-600', 'from-emerald-500 to-teal-600', 'from-purple-500 to-violet-600'];
+                const randomMessages = liveComments[Math.floor(Math.random() * liveComments.length)];
+                const randomName = randomNames[Math.floor(Math.random() * randomNames.length)];
+                const randomColor = randomColors[Math.floor(Math.random() * randomColors.length)];
+                
+                const newComment = {
+                    id: commentIdCounter++,
+                    user: randomName,
+                    avatar: randomName.charAt(0),
+                    message: randomMessages,
+                    time: 'Baru saja',
+                    color: randomColor
+                };
+                
+                commentsData.unshift(newComment);
+                if (commentsData.length > 20) commentsData.pop();
+                renderComments();
+            }
+        }
+
+        function animateCounters() {
+            // Simulate viewer increment
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    viewerCount += Math.floor(Math.random() * 3);
+                    document.getElementById('viewerCount').textContent = viewerCount;
+                    document.getElementById('totalViews').textContent = viewerCount;
+                }
+            }, 5000);
+        }
+
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+        }
+
+        // ========== EVENT LISTENERS ==========
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = e.target.querySelector('input[type="email"]').value;
+            const name = email.split('@')[0];
+            
+            currentUser = { name: name.charAt(0).toUpperCase() + name.slice(1), email, isGuest: false };
+            
+            loginPage.classList.add('hidden');
+            dashboardPage.classList.remove('hidden');
+            
+            updateUI();
+            renderComments();
+            initScrollAnimations();
+            animateCounters();
+            
+            showToast('Berhasil login!', 'success');
+        });
+
+        guestBtn.addEventListener('click', () => {
+            currentUser = { name: 'Tamu', isGuest: true };
+            
+            loginPage.classList.add('hidden');
+            dashboardPage.classList.remove('hidden');
+            
+            updateUI();
+            renderComments();
+            initScrollAnimations();
+            animateCounters();
+            
+            showToast('Masuk sebagai tamu', 'info');
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            currentUser = null;
+            isSubscribed = false;
+            hasLiked = false;
+            
+            loginPage.classList.remove('hidden');
+            dashboardPage.classList.add('hidden');
+            
+            // Reset form
+            loginForm.reset();
+            
+            showToast('Berhasil keluar', 'info');
+        });
+
+        likeBtn.addEventListener('click', () => {
+            hasLiked = !hasLiked;
+            likeCount += hasLiked ? 1 : -1;
+            
+            document.getElementById('likeCount').textContent = likeCount.toLocaleString();
+            
+            if (hasLiked) {
+                likeBtn.classList.add('liked');
+                showToast('Anda menyukai halaman ini', 'success');
+            } else {
+                likeBtn.classList.remove('liked');
+            }
+        });
+
+        subscribeBtn.addEventListener('click', () => {
+            if (currentUser && currentUser.isGuest) {
+                showToast('Login terlebih dahulu untuk subscribe', 'error');
+                return;
+            }
+            
+            isSubscribed = !isSubscribed;
+            subscriberCount += isSubscribed ? 1 : -1;
+            
+            document.getElementById('subscriberCount').textContent = subscriberCount;
+            document.getElementById('subscribeText').textContent = isSubscribed ? 'Subscribed' : 'Subscribe';
+            
+            if (isSubscribed) {
+                subscribeBtn.classList.add('subscribed');
+                showToast('Terima kasih telah subscribe!', 'success');
+            } else {
+                subscribeBtn.classList.remove('subscribed');
+            }
+        });
+
+        sendCommentBtn.addEventListener('click', () => {
+            const message = commentField.value.trim();
+            
+            if (!message) {
+                showToast('Komentar tidak boleh kosong', 'error');
+                return;
+            }
+            
+            if (currentUser && currentUser.isGuest) {
+                showToast('Tamu tidak dapat mengirim komentar', 'error');
+                return;
+            }
+            
+            const newComment = {
+                id: commentIdCounter++,
+                user: currentUser.name,
+                avatar: currentUser.name.charAt(0),
+                message: message,
+                time: 'Baru saja',
+                color: 'from-blue-500 to-purple-600'
+            };
+            
+            commentsData.unshift(newComment);
+            renderComments();
+            commentField.value = '';
+            
+            showToast('Komentar terkirim!', 'success');
+        });
+
+        commentField.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendCommentBtn.click();
+            }
+        });
+
+        document.getElementById('shareBtn').addEventListener('click', () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Bumi Madinah Dialysis Center',
+                    text: 'Platform monitoring kesehatan untuk pasien hemodialisis',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                showToast('Link disalin ke clipboard!', 'success');
+            }
+        });
+
+        // Live comment simulation
+        setInterval(addLiveComment, 8000);
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Any initial setup
+        });
+    </script>
+</body>
+</html>
